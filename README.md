@@ -140,15 +140,15 @@ On Intel computers, pressing the power button and turning the computer on is the
 
 We can enable HAP mode by simply adjusting the `HAP/AltMeDisable` bit located in the IFD area. and we use [@dt-zero](https://github.com/dt-zero) modified [me_cleaner](https://github.com/oood/How-to-Disable-Intel-ME-on-Intel-NUCs/raw/main/files/me_cleaner/) to make this change. since me_cleaner is not used to modify the IFD, but the entire IME (IFD is the first 4KB of the IME), we also need to extract the IFD from the modified IME after modification.
 
-### i. Copy `ime.bin` to the same directory as `me_cleaner.py`
+### i. Copy `full.bin` to the same directory as `me_cleaner.py`
 
 ### ii. Open a command prompt and run the command below to generate the modified IME image[[8]](#8):
 
 ````python
-python me_cleaner.py --soft-disable-only --output hap-ime.bin ./ime.bin
+python me_cleaner.py --soft-disable-only --output hap-ime.bin ./full.bin
 ````
 
-Specify your actual path to `me_cleaner.py` and original `ime.bin` in the command above, It's the IME that needs to be modified here, not the IFD!
+Specify your actual path to `me_cleaner.py` and original `full.bin` in the command above, It's the IME (through full.bin) that needs to be modified here, not the IFD!
 
 ### iii. Extract the IFD from the modified IME using `head.exe`
 
@@ -216,6 +216,8 @@ Install the computer's drives, DRAM and plug in the power and video-out cables. 
 ### v. Now keep the short circuit and press the power button, the power light is on for 3-5 seconds and then disconnect the short circuit
 
 You can try the next step. If the short is unsuccessful, you will not be able to flash in. and you will need to redo the steps of [Suspend BitLocker](#5-suspend-bitlocker-protection-in-windows), [Completely shutdown the computer, short and turning it on](#6-make-the-flash-chip-writable).
+
+Be patient, you may need to try many times until you succeed with the short circuit. A magnifying glass may help.
 
 
 ## 7. Flash the `hap-ifd.bin`
