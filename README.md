@@ -163,7 +163,7 @@ Now we have an IFD image that we can use to flash
 ### iv. Generate twice and check whether the files hash is consistent
 
 ````
-python me_cleaner.py --soft-disable-only --output hap-ime2.bin ./ime.bin
+python me_cleaner.py --soft-disable-only --output hap-ime2.bin ./full.bin
 head.exe -c 4096 hap-ime2.bin > hap-ifd2.bin
 
 certutil -hashfile .\hap-ime.bin
